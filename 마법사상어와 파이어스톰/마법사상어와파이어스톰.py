@@ -14,12 +14,13 @@ count = [0] * (n+1)
 cnt = 1
 
 def rotate(L):
+    global new
     jump_size = 2 ** L
     for y in range(0, n, jump_size):
         for x in range(0, n, jump_size):
             for i in range(jump_size):
                 for j in range(jump_size):
-                    new[y+j][x+jump_size - i - 1] = arr[y+i][x+j]
+                    new[y+j][x+jump_size - i - 1] = new[y+i][x+j]
 
 def melt():
 
@@ -39,6 +40,7 @@ def melt():
 def bfs(y,x, cnt):
     global check
     global new
+    
     q = deque()
     q.append([y,x])
     ss = 0
@@ -68,8 +70,8 @@ if __name__ == "__main__":
         for j in range(n):
             if check[i][j] == 0 and new[i][j] > 0:
                 count[cnt] += 1
-                check[i][j] = 1
-                count[cnt]  S+= bfs(i,j,cnt)
+                check[i][j] = cnt
+                count[cnt] += bfs(i,j,cnt)
                 cnt += 1
     print(max(count))
 
