@@ -59,7 +59,7 @@ def sum():
     s = 0
     for y in range(n):
         for x in range(n):
-                s += new[y][x]
+            s += new[y][x]
     return s
 if __name__ == "__main__":
     for i in l_list:
