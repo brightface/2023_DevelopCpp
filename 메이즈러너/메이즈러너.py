@@ -4,6 +4,7 @@ class Person:
         self.y = y
         self.road = road
         self.sum = sum
+
 def rotate(sy, sx, ey, ex):
     global arr
     ay, ax = -1, -1
