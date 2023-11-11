@@ -29,8 +29,8 @@ def dfs(y, x, nc):
             if check[y][x] == 0:
                 print("5")
                 check[y][x] = 1
-                nnc = nc + arr[y][x]
-                road.add(nnc)
+                nc += arr[y][x]
+                road.add(nc)
                 print(road)
                 ans += 1
                 if mx < ans:
@@ -39,18 +39,19 @@ def dfs(y, x, nc):
                     print("6")
                     ny = y + dy[i]
                     nx = x + dx[i]
+                    nnc = nc + arr[ny][nx]
+                    print(nnc)
                     if 0 <= ny < n and 0 <= nx < m and not (ny == 0 and nx == 0):
-                        nnnc = nnc + arr[ny][nx]
-                        print(nnnc)
-                        if not nnnc in road and check[ny][nx] == 0:
+
+                        if not nnc in road and check[ny][nx] == 0:
                             print("7")
-                            road.add(nnnc)
+                            road.add(nnc)
                             print(road)
-                            dfs(ny, nx, nnnc)
-                            road.remove(nnnc)
-                            print(road)
-                            check[ny][nx] = 0
-                            ans -= 1
+                            dfs(ny, nx, nnc)
+                    road.remove(nnc)
+                    print(road)
+                    check[ny][nx] = 0
+                    ans -= 1
 #
 dfs(0,0, "")
 # print(d)
